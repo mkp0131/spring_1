@@ -7,7 +7,7 @@ import com.lililli.spring_1.member.MemberService;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberSericeImpl();
+        MemberService memberService = new AppConfig().memberService();
 
         Member mkp = new Member(1L, "mkp", Grade.VIP);
 

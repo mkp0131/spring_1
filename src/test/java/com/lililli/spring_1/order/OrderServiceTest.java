@@ -1,15 +1,25 @@
 package com.lililli.spring_1.order;
 
+import com.lililli.spring_1.AppConfig;
 import com.lililli.spring_1.member.Grade;
 import com.lililli.spring_1.member.Member;
 import com.lililli.spring_1.member.MemberSericeImpl;
 import com.lililli.spring_1.member.MemberService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberSericeImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
+
     @Test
     void createOrder() {
         Member member = new Member(1L, "mkp", Grade.VIP);

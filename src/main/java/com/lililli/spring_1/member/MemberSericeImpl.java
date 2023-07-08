@@ -2,7 +2,11 @@ package com.lililli.spring_1.member;
 
 public class MemberSericeImpl implements MemberService {
 
-    private static MemberRepository repository = new MemoryMemberRepository();
+    private final MemberRepository repository;
+
+    public MemberSericeImpl(MemberRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void join(Member member) {

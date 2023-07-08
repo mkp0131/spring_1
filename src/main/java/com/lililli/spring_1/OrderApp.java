@@ -12,8 +12,8 @@ public class OrderApp {
 
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberSericeImpl();
-        OrderService orderService = new OrderServiceImpl();
+        MemberService memberService = new AppConfig().memberService();
+        OrderService orderService = new AppConfig().orderService();
 
         Member member = new Member(1L, "mkp", Grade.VIP);
         memberService.join(member);

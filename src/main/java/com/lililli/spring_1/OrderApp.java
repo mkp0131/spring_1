@@ -7,13 +7,18 @@ import com.lililli.spring_1.member.MemberService;
 import com.lililli.spring_1.order.Order;
 import com.lililli.spring_1.order.OrderService;
 import com.lililli.spring_1.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
 
 
     public static void main(String[] args) {
-        MemberService memberService = new AppConfig().memberService();
-        OrderService orderService = new AppConfig().orderService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
         Member member = new Member(1L, "mkp", Grade.VIP);
         memberService.join(member);

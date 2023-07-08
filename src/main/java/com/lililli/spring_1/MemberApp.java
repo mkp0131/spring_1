@@ -4,10 +4,16 @@ import com.lililli.spring_1.member.Grade;
 import com.lililli.spring_1.member.Member;
 import com.lililli.spring_1.member.MemberSericeImpl;
 import com.lililli.spring_1.member.MemberService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new AppConfig().memberService();
+
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
 
         Member mkp = new Member(1L, "mkp", Grade.VIP);
 
